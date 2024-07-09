@@ -1,5 +1,18 @@
 ---
+const pageTitle = "About This Site";
 
+const identity = {
+    firstName: "サラ",
+    country: "カナダ",
+    occupation: "技術ライター",
+    hobbies: ["写真", "バードウォッチング", "野球"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "ドキュメントの執筆"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="ja">
@@ -8,7 +21,7 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
+        <title>{pageTitle}</title>
     </head>
     <body>
         <!-- Navigation -->
@@ -18,10 +31,31 @@
         <a href="/blog">Blog</a>
 
         <!-- main -->
-        <h1>About</h1>
+        <h1>{pageTitle}</h1>
         <p>追加されたページです</p>
         <h2>説明</h2>
         <p>今のところHTMLを手書きで追加しているところです</p>
         <p>リッチなeditorは無いようです</p>
+
+        <h2>Profile</h2>
+        <ul>
+            <li>name: {identity.firstName}</li>
+            <li>country: {identity.country}</li>
+            <li>job: {identity.occupation}</li>
+            <li>hobbies.length: {identity.hobbies.length}</li>
+            <li>hobbies[0]: {identity.hobbies[0]} ...</li>
+            <li>hobbies: {identity.hobbies}</li>
+        </ul>
+        <p>配列は繋がってそのまま表示されるようだ</p>
+
+        <h2>skills</h2>
+        <ul>
+            {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+
+        <h2>条件表示テスト</h2>
+        {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです!</p>}
+        {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
+        {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
     </body>
 </html>
