@@ -1,4 +1,8 @@
 ---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+
 const pageTitle = "Astro Site";
 ---
 
@@ -11,12 +15,12 @@ const pageTitle = "Astro Site";
         <title>{pageTitle}</title>
     </head>
     <body>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
+        <Navigation />
 
         <h1>はじめてのAstroサイト構築</h1>
         <p>{pageTitle}</p>
         <p>GitHub ➡ Netlify</p>
+
+        <Footer />
     </body>
 </html>

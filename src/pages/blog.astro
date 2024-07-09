@@ -1,4 +1,7 @@
 ---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+
 const pageTitle = "Blog";
 ---
 
@@ -13,9 +16,7 @@ const pageTitle = "Blog";
     <body>
         <!-- Navigation -->
         <!-- aタグ使用していページ間の移動を実装。SPAではないのである -->
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
+        <Navigation />
 
         <!-- main -->
         <h1>{pageTitle}</h1>
