@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 
 const pageTitle = "About This Site";
 
@@ -44,7 +45,8 @@ const skillColor = "navy";
         <!-- <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/blog">Blog</a> -->
-        <Navigation />
+        <!-- <Navigation /> -->
+        <Header />
 
         <!-- main -->
         <h1>{pageTitle}</h1>
@@ -74,5 +76,9 @@ const skillColor = "navy";
         {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです!</p>}
         {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
         {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
+
+        <script>
+            import "../scripts/menu.js";
+        </script>
     </body>
 </html>

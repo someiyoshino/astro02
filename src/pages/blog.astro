@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 
 const pageTitle = "Blog";
 ---
@@ -16,7 +17,8 @@ const pageTitle = "Blog";
     <body>
         <!-- Navigation -->
         <!-- aタグ使用していページ間の移動を実装。SPAではないのである -->
-        <Navigation />
+        <!-- <Navigation /> -->
+        <Header />
 
         <!-- main -->
         <h1>{pageTitle}</h1>
@@ -26,5 +28,8 @@ const pageTitle = "Blog";
             <li><a href="/posts/post-2">記事2</a></li>
             <li><a href="/posts/post-3">記事3</a></li>
         </ul>
+        <script>
+            import "../scripts/menu.js";
+        </script>
     </body>
 </html>

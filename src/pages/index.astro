@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
+// import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 const pageTitle = "Astro Site";
@@ -15,12 +16,20 @@ const pageTitle = "Astro Site";
         <title>{pageTitle}</title>
     </head>
     <body>
-        <Navigation />
+        <!-- <Navigation /> -->
+        <Header />
 
         <h1>はじめてのAstroサイト構築</h1>
         <p>{pageTitle}</p>
         <p>GitHub ➡ Netlify</p>
 
+        <hr />
+        <h2>Memo</h2>
+        <p>min-width: 636px ...636px以上について</p>
+
         <Footer />
+        <script>
+            import "../scripts/menu.js";
+        </script>
     </body>
 </html>
