@@ -1,7 +1,8 @@
 ---
-import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
-import Header from "../components/Header.astro";
+// import "../styles/global.css";
+// import Navigation from "../components/Navigation.astro";
+// import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About This Site";
 
@@ -21,64 +22,38 @@ const goal = 3;
 const skillColor = "navy";
 ---
 
-<html lang="ja">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{pageTitle}</title>
-        <style define:vars={{ skillColor }}>
-            h1 {
-                color: purple;
-                font-size: 4rem;
-            }
-            .skill {
-                color: var(--skillColor);
-                font-weight: bold;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Navigation -->
-        <!-- aタグ使用していページ間の移動を実装。SPAではないのである -->
-        <!-- <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a> -->
-        <!-- <Navigation /> -->
-        <Header />
+<BaseLayout pageTitle={pageTitle}>
+    <style define:vars={{ skillColor }}>
+        .skill {
+            color: var(--skillColor);
+            /* color: red; */
+            font-weight: bold;
+        }
+    </style>
 
-        <!-- main -->
-        <h1>{pageTitle}</h1>
-        <p>追加されたページです</p>
-        <h2>説明</h2>
-        <p>今のところHTMLを手書きで追加しているところです</p>
-        <p>リッチなeditorは無いようです</p>
+    <h2>説明</h2>
+    <p>今のところHTMLを手書きで追加しているところです</p>
+    <p>リッチなeditorは無いようです</p>
 
-        <h2>Profile</h2>
-        <ul>
-            <li>name: {identity.firstName}</li>
-            <li>country: {identity.country}</li>
-            <li>job: {identity.occupation}</li>
-            <li>hobbies.length: {identity.hobbies.length}</li>
-            <li>hobbies[0]: {identity.hobbies[0]} ...</li>
-            <li>hobbies: {identity.hobbies}</li>
-        </ul>
-        <p>配列は繋がってそのまま表示されるようだ</p>
+    <h2>Profile</h2>
+    <ul>
+        <li>name: {identity.firstName}</li>
+        <li>country: {identity.country}</li>
+        <li>job: {identity.occupation}</li>
+        <li>hobbies.length: {identity.hobbies.length}</li>
+        <li>hobbies[0]: {identity.hobbies[0]} ...</li>
+        <li>hobbies: {identity.hobbies}</li>
+    </ul>
+    <p>配列は繋がってそのまま表示されるようだ</p>
 
-        <h2>skills</h2>
-        <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-        </ul>
+    <h2>skills</h2>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
 
-        <h2>条件表示テスト</h2>
-        <p>以下は参考演算子等で分岐して表示を選択している...</p>
-        {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです!</p>}
-        {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
-        {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
-
-        <script>
-            import "../scripts/menu.js";
-        </script>
-    </body>
-</html>
+    <h2>条件表示テスト</h2>
+    <p>以下は参考演算子等で分岐して表示を選択している...</p>
+    {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです!</p>}
+    {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
+    {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
+</BaseLayout>
