@@ -17,4 +17,8 @@ const pageTitle = "Blog";
         <!-- <a href={post.url}>{post.frontmatter.title}</a> -->
         {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
     </ul>
+    <hr />
+    <p>tag: <a href="/tags/astro">astro</a></p>
+    <p>tags: <a href="/tags">tags</a></p>
+    <hr />
 </BaseLayout>

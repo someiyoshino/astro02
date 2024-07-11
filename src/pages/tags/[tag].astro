@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+
+export async function getStaticPaths() {
+    // const allPosts = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const allPosts = await Astro.glob("../posts/*.md");
+
+    // tag一覧生成
+    // "..."スプレッド構文で配列を展開し、Setオブジェクトで重複を削除
+    // flat()メソッドで1次元へ平滑化。言葉として平坦化のほうがいいかな？
+    const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+    // console.log(uniqueTags); // ["成功", "コミュニティ", "ブログ", "後退", "公開学習"]
+
+    // 以下はAstroのコード整形を無視する設定です
+    // prettier-ignore
+    // return [
+    //     { params: { tag: "astro" }, props: { posts: allPosts } },
+    //     { params: { tag: "成功" }, props: { posts: allPosts } },
+    //     { params: { tag: "コミュニティ" }, props: { posts: allPosts } },
+    //     { params: { tag: "ブログ" }, props: { posts: allPosts } },
+    //     { params: { tag: "後退" }, props: { posts: allPosts } },
+    //     { params: { tag: "公開学習" }, props: { posts: allPosts } },
+    // ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) => post.frontmatter.tags?.includes(tag));
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+// tag変数の文字列があればtrueを返す。よってfilterの機能を有する。
+// const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag)); // 不要になった
+// console.log("console");
+// console.log(filteredPosts);
+// console.log(tag); // astro
+// console.log(posts);
+// console.log(posts[0]);
+// console.log(posts[0].frontmatter);
+// console.log(posts[0].frontmatter.tags);
+// console.log(posts[0].url); // 1つのプロパティを覗く
+---
+
+<BaseLayout pageTitle={tag}>
+    <hr />
+    <p>{tag}のタグが付いた記事</p>
+    <hr />
+    <ul>
+        <!-- filteredPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />) -->
+        {posts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    </ul>
+</BaseLayout>
