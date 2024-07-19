@@ -5,6 +5,7 @@ import BlogPost from "../../components/BlogPost.astro";
 export async function getStaticPaths() {
     // const allPosts = await fetch("https://jsonplaceholder.typicode.com/posts");
     const allPosts = await Astro.glob("../posts/*.md");
+    // console.log(typeof allPosts);
 
     // tag一覧生成
     // "..."スプレッド構文で配列を展開し、Setオブジェクトで重複を削除

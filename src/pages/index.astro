@@ -7,11 +7,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Greeting from "../components/Greeting";
 
-const pageTitle = "Astro Site!";
-console.log("Hello!");
+const pageTitle = "Astro, Hello!";
+// console.log("Hello!");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+    <h2>memo</h2>
+    <p><a href="rss.xml">rss.xml</a></p>
     <h2>Memo.1</h2>
 
     <p>pageTitle: {pageTitle}</p>
@@ -21,4 +23,10 @@ console.log("Hello!");
     <p>min-width: 636px ...636px以上について</p>
     <hr />
     <Greeting client:load messages={["どうも", "こんにちは", "初めまして", "ようこそ"]} />
+
+    <hr />
+    <h2>Task</h2>
+    <ul>
+        <li>記事を日付順に表示したい</li>
+    </ul>
 </BaseLayout>

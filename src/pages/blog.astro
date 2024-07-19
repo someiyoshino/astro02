@@ -6,6 +6,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 const allPosts = await Astro.glob("../pages/posts/*.md");
 const pageTitle = "Blog";
+
+// sortの参考になりそうなコード
+// const posts = (await getCollection('blog')).sort(
+// 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+// );
+
+// 表示してみよう
+// console.log(allPosts); // [{},{},~~~]
+// console.log(typeof allPosts); // object
+// console.log(Object.prototype.toString.call(allPosts)); // [object Array]
+// 配列>オブジェクト>frontmatter>title, url
+// フロントマターのデータを取得できている
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -15,10 +27,15 @@ const pageTitle = "Blog";
         <li><a href="/posts/post-2">記事2</a></li>
         <li><a href="/posts/post-3">記事3</a></li> -->
         <!-- <a href={post.url}>{post.frontmatter.title}</a> -->
+
+        <!-- BlogPostコンポーネントを使って表示 -->
+        <!-- Blogの一覧を表示する
+        urlとtitleが必要
+        各postのフロントマターからurlとtitleを取得できる -->
         {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
     </ul>
     <hr />
-    <p>tag: <a href="/tags/astro">astro</a></p>
+    <!-- <p>tag: <a href="/tags/astro">astro</a></p>
     <p>tags: <a href="/tags">tags</a></p>
-    <hr />
+    <hr /> -->
 </BaseLayout>
