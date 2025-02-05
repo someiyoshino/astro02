@@ -1,5 +1,20 @@
 # Astro Starter Kit: Minimal
 
+## memo / 覚書
+
+clone
+npm install
+npm run dev
+で実行できます。
+
+これは公式のtutorial（初心者向けのガイド）です。
+結構色々打ち込んでいる。
+
+そして、Astroは、5.1まで進んでいた。4days agoのことらしい。
+このSampleは4.11.5でした。
+
+---
+
 ```sh
 npm create astro@latest -- --template minimal
 ```
